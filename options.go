@@ -39,6 +39,14 @@ func (o *Options) Clone() *Options {
 	}
 }
 
+// FormDataBase setup from exist db instance
+func FormDataBase(db *mongo.Database) Option {
+	return func(opts *Options) error {
+		opts.db = db
+		return nil
+	}
+}
+
 // SetDatabase setup database by connection url and db name
 func SetDatabase(url string, dbName string, opts ...*options.ClientOptions) Option {
 	return func(opt *Options) error {
