@@ -22,6 +22,10 @@ type Options struct {
 	collections *sync.Map
 }
 
+func (o Options) Database() *mongo.Database {
+	return o.db
+}
+
 type Option func(opts *Options) error
 
 //Options Clone Current Options
